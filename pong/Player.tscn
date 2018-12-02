@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://panel.png" type="Texture" id=2]
+
+[node name="Player" type="Area2D" index="0"]
+
+position = Vector2( 197.756, 219.219 )
+scale = Vector2( 0.6, 2.3 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_horizontal_guides_": [ 170.382, 269.95 ],
+"_edit_vertical_guides_": [ 189.79, 207.017 ]
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="." index="0"]
+
+scale = Vector2( 2, 2.5 )
+build_mode = 0
+polygon = PoolVector2Array( 10.9012, 0.0815964, 9.40915, -9.93615, -9.91861, -9.94209, -9.92789, 9.99046, 9.63278, 10.0057 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0.947604, 0.0858164 )
+scale = Vector2( 2.45004, 0.555711 )
+texture = ExtResource( 2 )
+
+
