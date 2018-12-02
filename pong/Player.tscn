@@ -18,9 +18,12 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 __meta__ = {
 "_edit_group_": true,
-"_edit_horizontal_guides_": [ 170.382, 269.95 ],
+"_edit_horizontal_guides_": [ 161.791, 269.95, 219.27 ],
 "_edit_vertical_guides_": [ 189.79, 207.017 ]
 }
+speed = 400
+clampOffset = 50
+startPos = Vector2( 180, 360 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="." index="0"]
 
@@ -34,5 +37,6 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 position = Vector2( 0.947604, 0.0858164 )
 scale = Vector2( 2.45004, 0.555711 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 
