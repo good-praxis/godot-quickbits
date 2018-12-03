@@ -1,6 +1,11 @@
 extends KinematicBody2D
 
-	
+var start_x
+
+func _ready():
+	start_x = position.x
+
+
 func _physics_process(delta):
 	var velocity = Vector2(0, 0)
 	
@@ -11,4 +16,5 @@ func _physics_process(delta):
 		
 	
 	move_and_slide(velocity)
+	position.x = start_x
 	

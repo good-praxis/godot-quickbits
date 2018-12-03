@@ -20,6 +20,13 @@ window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 
+[physics]
+
+2d/default_gravity=0
+2d/default_gravity_vector=Vector2( 0, 0 )
+2d/default_linear_damp=0.0
+2d/default_angular_damp=0
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

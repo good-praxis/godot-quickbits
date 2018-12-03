@@ -26,7 +26,7 @@ collision/safe_margin = 1.0
 
 [node name="Wall" parent="Walls" index="0" instance=ExtResource( 5 )]
 
-_sections_unfolded = [ "Pickable", "Transform" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
 [node name="Wall2" parent="Walls" index="1" instance=ExtResource( 5 )]
 
