@@ -17,11 +17,11 @@ func get_rand_velocity():
 func _ready():
 	randomize()
 	velocity = get_rand_velocity()
+	set_linear_velocity(velocity)	
 
 	
 
-func _physics_process(delta):
-	set_linear_velocity(velocity)
+#func _physics_process(delta):
 	
 	
 	
