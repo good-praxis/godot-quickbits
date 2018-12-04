@@ -20,8 +20,6 @@ position = Vector2( 1152, 320 )
 
 [node name="Ball" parent="." index="2" instance=ExtResource( 4 )]
 
-contact_monitor = true
-
 [node name="Walls" type="Node" parent="." index="3"]
 
 [node name="Wall" parent="Walls" index="0" instance=ExtResource( 5 )]

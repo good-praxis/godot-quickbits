@@ -1,11 +1,10 @@
 extends Node2D
 
-var start_x
+
 var screensize
-var collisionArray = [] # in case we want to implement more than one ball later on
+var collision_array = [] # in case we want to implement more than one ball later on
 
 func _ready():
-	start_x = position.x
 	screensize = get_viewport_rect().size
 
 func _process(delta):
@@ -20,12 +19,30 @@ func _process(delta):
 	
 	position.y += (velocity.y * delta)
 	position.y = clamp(position.y, offset, screensize.y - offset)
-	position.x = start_x
+
 	
 	
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Ball": 
-		pass
-	print(body.name)
+	print(body.position)
+	if not body in collision_array:
+		collision_array.append(body)
+		var force
+		var ball_velocity = body.get_linear_velocity()
+		if abs(body.position.x - position.x) < 14:
+			print("Indirect Impact")
+			force = 350 if (position.x < body.position.x) else -350
+			body.set_linear_velocity(Vector2(body.get_linear_velocity().x, force))
+		else:
+			print("Direct Impact")
+			print("body velocity before impact: ", body.get_linear_velocity())
+			force = body.get_linear_velocity().x * -1
+			print("calculated force: ", force)
+			#body.set_linear_velocity(Vector2(body.get_linear_velocity().x * -1, body.get_linear_velocity().y))
+			body.apply_impulse(Vector2(-100, 0), Vector2(500, 0))
+			print("body after impact: ", body.get_linear_velocity())
+	
+
+func _on_Area2D_body_exited(body):
+	collision_array.erase(body)

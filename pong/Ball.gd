@@ -18,7 +18,6 @@ func _ready():
 	randomize()
 	velocity = get_rand_velocity()
 	apply_impulse(Vector2(), velocity)	
-
-
-func _on_Ball_body_entered(body):
-	print("EYOOO")
+	
+func _physics_process(delta):
+	print(position)
