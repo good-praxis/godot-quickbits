@@ -16,9 +16,9 @@ func move_towards_ball(ball_y):
 
 	
 	if ball_y > position.x:
-		goal = diff
+		goal = diff * 2
 	else:
-		goal = -diff
-	print(diff, " ", goal)
+		goal = -diff * 2
+
 	
 	move_and_slide(Vector2(0, goal))

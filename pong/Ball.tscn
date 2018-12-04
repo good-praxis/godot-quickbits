@@ -43,4 +43,6 @@ texture = ExtResource( 2 )
 
 shape = SubResource( 1 )
 
+[connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]
+
 

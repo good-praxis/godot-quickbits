@@ -17,13 +17,8 @@ func get_rand_velocity():
 func _ready():
 	randomize()
 	velocity = get_rand_velocity()
-	set_linear_velocity(velocity)	
+	apply_impulse(Vector2(), velocity)	
 
-	
 
-#func _physics_process(delta):
-	
-	
-	
-	
-
+func _on_Ball_body_entered(body):
+	print("EYOOO")
