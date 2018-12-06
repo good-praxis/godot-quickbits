@@ -12,7 +12,6 @@ config_version=3
 
 config/name="Pong"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
 
 [display]
 
@@ -29,4 +28,4 @@ window/size/resizable=false
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_clear_color=Color( 0, 0, 0, 1 )
