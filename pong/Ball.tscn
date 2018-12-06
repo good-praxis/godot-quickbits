@@ -1,36 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ball.gd" type="Script" id=1]
 [ext_resource path="res://ball.png" type="Texture" id=2]
+[ext_resource path="res://pong.tres" type="AudioStream" id=3]
+[ext_resource path="res://SFX.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 16.0
 
-[node name="Ball" type="RigidBody2D" index="0"]
+[node name="Ball" type="Area2D" index="0"]
 
-position = Vector2( 640, 352 )
-input_pickable = false
-collision_layer = 3
-collision_mask = 3
-mode = 0
-mass = 100.0
-friction = 0.0
-bounce = 1.0
-gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 1
-contact_monitor = true
-sleeping = false
-can_sleep = false
-linear_velocity = Vector2( 0, 0 )
-linear_damp = 0.0
-angular_velocity = 0.0
-angular_damp = 0.0
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -43,6 +32,18 @@ texture = ExtResource( 2 )
 
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]
+[node name="SFX" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+script = ExtResource( 4 )
+
+[connection signal="area_entered" from="." to="." method="_on_Ball_area_entered"]
+
+[connection signal="area_exited" from="." to="." method="_on_Ball_area_exited"]
 
 

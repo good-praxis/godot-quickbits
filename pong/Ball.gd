@@ -1,23 +1,37 @@
-extends RigidBody2D 
+extends Area2D 
 
-var velocity = Vector2()
+var velocity = 400
+var direction = Vector2()
+var is_colliding = false
 
 
-func get_rand_velocity():
-	var velocity = Vector2()
+func get_rand_direction():
+	var direction = Vector2()
 	if randf() > 0.5:
-		velocity.x = -400
+		direction.x = -1
 	else:
-		velocity.x = 400
+		direction.x = 1
 		
-	velocity.y = rand_range(-150, 150)
+	return direction
 	
-	return velocity
+func set_direction(direction):
+	direction = direction.normalized()
 	
 func _ready():
 	randomize()
-	velocity = get_rand_velocity()
-	apply_impulse(Vector2(), velocity)	
+	direction = get_rand_direction()
 	
-func _physics_process(delta):
-	print(position)
+func _process(delta):
+	position += direction * velocity * delta
+
+func _on_Ball_area_entered(area):
+	if is_colliding:
+		pass
+	is_colliding = true
+	$SFX.play()
+
+func _on_Ball_area_exited(area):
+	is_colliding = false
+
+func _on_SFX_finished():
+	print("LOL")
