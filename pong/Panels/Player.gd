@@ -1,6 +1,6 @@
 extends Area2D
 
-
+const TYPE = "PANEL"
 var screensize
 var collision_array = [] # in case we want to implement more than one ball later on
 

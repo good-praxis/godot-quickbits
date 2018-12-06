@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const TYPE = "PANEL"
+
 var start_x
 
 func _ready():

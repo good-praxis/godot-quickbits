@@ -29,6 +29,12 @@ func _on_Ball_area_entered(area):
 		pass
 	is_colliding = true
 	$SFX.play()
+	
+	if area.TYPE == "PANEL":
+		var collision_vector = position - area.position
+		direction = collision_vector.normalized()
+	else:
+		direction.y = -direction.y
 
 func _on_Ball_area_exited(area):
 	is_colliding = false

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/panel.png-f78a48dc9ba7f058615e894a195b0528.stex"
+path="res://.import/ball.png-13e2e99084f17fc704bec2535439887a.stex"
 
 [deps]
 
-source_file="res://panel.png"
-dest_files=[ "res://.import/panel.png-f78a48dc9ba7f058615e894a195b0528.stex" ]
+source_file="res://Sounds/ball.png"
+dest_files=[ "res://.import/ball.png-13e2e99084f17fc704bec2535439887a.stex" ]
 
 [params]
 

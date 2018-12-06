@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pong.wav-c923781bef992ad7ebb53b7982bbeee6.sample"
+path="res://.import/pong.wav-777e676839e201c7acccf722c4741e2e.sample"
 
 [deps]
 
-source_file="res://pong.wav"
-dest_files=[ "res://.import/pong.wav-c923781bef992ad7ebb53b7982bbeee6.sample" ]
+source_file="res://Sounds/pong.wav"
+dest_files=[ "res://.import/pong.wav-777e676839e201c7acccf722c4741e2e.sample" ]
 
 [params]
 
