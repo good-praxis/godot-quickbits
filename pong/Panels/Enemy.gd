@@ -1,26 +1,38 @@
-extends KinematicBody2D
+extends Area2D
 
 const TYPE = "PANEL"
-
-var start_x
+const ALLOWED_MOVEMENT = 350 #  slight nerfed compared to player
+const SPRITE_OFFSET = 64 # Offset from origin to end of sprite
+var screensize
+var ball_position = Vector2()
+var ball_moving_towards_enemy = false
 
 func _ready():
-	start_x = position.x
+	screensize = get_viewport_rect().size
 
 
-func _physics_process(delta):
-	position.x = start_x
+func _process(delta):
+	if not ball_moving_towards_enemy:
+		return
 	
-
-func move_towards_ball(ball_y):
-	var diff = abs(position.y) - abs(ball_y)
-	var goal
-
 	
-	if ball_y > position.x:
-		goal = diff * 2
+	var abs_ball_y = abs(ball_position.y)
+	var abs_pos_y = abs(position.y)
+	var diff = abs_ball_y - abs_pos_y
+	
+	if diff <= 10 and diff >= -10:
+		return
+	elif ball_position.y > position.y:
+		position += Vector2(0, ALLOWED_MOVEMENT * delta)
 	else:
-		goal = -diff * 2
-
+		position -= Vector2(0, ALLOWED_MOVEMENT * delta)
+		
+	position.y = clamp(position.y, SPRITE_OFFSET, screensize.y - SPRITE_OFFSET) 
 	
-	move_and_slide(Vector2(0, goal))
+
+func set_ball_position(new_ball_position):
+	if new_ball_position.x < ball_position.x:
+		ball_moving_towards_enemy = false
+	else:
+		ball_moving_towards_enemy = true
+	ball_position = new_ball_position

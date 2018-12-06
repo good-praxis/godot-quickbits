@@ -2,7 +2,7 @@ extends Area2D
 
 const TYPE = "PANEL"
 var screensize
-var collision_array = [] # in case we want to implement more than one ball later on
+
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -22,27 +22,3 @@ func _process(delta):
 
 	
 	
-
-
-func _on_Area2D_body_entered(body):
-	print(body.position)
-	if not body in collision_array:
-		collision_array.append(body)
-		var force
-		var ball_velocity = body.get_linear_velocity()
-		if abs(body.position.x - position.x) < 14:
-			print("Indirect Impact")
-			force = 350 if (position.x < body.position.x) else -350
-			body.set_linear_velocity(Vector2(body.get_linear_velocity().x, force))
-		else:
-			print("Direct Impact")
-			print("body velocity before impact: ", body.get_linear_velocity())
-			force = body.get_linear_velocity().x * -1
-			print("calculated force: ", force)
-			#body.set_linear_velocity(Vector2(body.get_linear_velocity().x * -1, body.get_linear_velocity().y))
-			body.apply_impulse(Vector2(-100, 0), Vector2(500, 0))
-			print("body after impact: ", body.get_linear_velocity())
-	
-
-func _on_Area2D_body_exited(body):
-	collision_array.erase(body)

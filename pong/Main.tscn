@@ -3,10 +3,10 @@
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Panels/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Panels/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sounds/Ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=5]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -35,5 +35,7 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
 position = Vector2( 640, 736 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
+
+[node name="Goals" type="Node" parent="." index="4"]
 
 

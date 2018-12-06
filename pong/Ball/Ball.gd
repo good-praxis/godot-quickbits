@@ -32,6 +32,7 @@ func _on_Ball_area_entered(area):
 	
 	if area.TYPE == "PANEL":
 		var collision_vector = position - area.position
+		velocity += 10
 		direction = collision_vector.normalized()
 	else:
 		direction.y = -direction.y
