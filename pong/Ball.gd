@@ -32,6 +32,3 @@ func _on_Ball_area_entered(area):
 
 func _on_Ball_area_exited(area):
 	is_colliding = false
-
-func _on_SFX_finished():
-	print("LOL")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ball.gd" type="Script" id=1]
 [ext_resource path="res://ball.png" type="Texture" id=2]
 [ext_resource path="res://pong.tres" type="AudioStream" id=3]
-[ext_resource path="res://SFX.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -40,7 +39,6 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
-script = ExtResource( 4 )
 
 [connection signal="area_entered" from="." to="." method="_on_Ball_area_entered"]
 
