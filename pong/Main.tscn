@@ -1,41 +1,111 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://Panels/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Panels/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Haike.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Panels/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Panels/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Goal.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node" index="0"]
 
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 896.0, 672.0, 448.0 ]
+}
 
-[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Score" type="CanvasLayer" parent="." index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="PlayerScore" type="Label" parent="Score" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -384.0
+margin_right = -192.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="EnemyScore" type="Label" parent="Score" index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = 256.0
+margin_right = 416.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 128, 320 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="Enemy" parent="." index="1" instance=ExtResource( 3 )]
+[node name="Enemy" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 1152, 320 )
 
-[node name="Ball" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Ball" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 672, 320 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
-[node name="Walls" type="Node" parent="." index="3"]
+[node name="Walls" type="Node" parent="." index="4"]
 
-[node name="Wall" parent="Walls" index="0" instance=ExtResource( 5 )]
+[node name="UpperWall" parent="Walls" index="0" instance=ExtResource( 6 )]
 
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
-[node name="Wall2" parent="Walls" index="1" instance=ExtResource( 5 )]
+[node name="LowerWall" parent="Walls" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 640, 736 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
-[node name="Goals" type="Node" parent="." index="4"]
+[node name="Goals" type="Node" parent="." index="5"]
+
+[node name="PlayerGoal" parent="Goals" index="0" instance=ExtResource( 7 )]
+
+[node name="EnemyGoal" parent="Goals" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 1312, 352 )
+
+[connection signal="score_point" from="Ball" to="." method="_on_Ball_score_point"]
 
 
